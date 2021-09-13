@@ -1,4 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import native from 'naive-ui';
+
+import createDemoRouter, {routes} from "./router";
+
+
+const app=createApp(App);
+const route=createDemoRouter(app,routes)
+app.use(native)
+    .use(route)
+    .mount('#app')
