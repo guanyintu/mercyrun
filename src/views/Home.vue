@@ -88,7 +88,5 @@ export default {
 .home{
   height: calc(100vh - 65px);
  }
-.n-menu .n-menu-item {
-  
-}
+
 </style>
