@@ -1,7 +1,7 @@
 <template>
   <n-loading-bar-provider>
 
-  <n-layout-header  bordered="true" class="nav" >
+  <n-layout-header  bordered class="nav" >
     <n-text tag="div" class="ui-logo" :depth="1" >
       <router-link to="/" ><img src="https://overwatch.nosdn.127.net/1/assets/images/hero/mercy/ability-guardian-angel/icon-ability.png"/></router-link>
       <span >天使跑酷</span>

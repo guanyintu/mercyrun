@@ -1,6 +1,6 @@
 <template>
   <div class="home" id="Home">
-    <n-layout has-sider style="height: 100%">
+    <n-layout has-sider  style="height: 100%;" position="absolute">
     <n-layout-sider
         collapse-mode="transform"
         :collapsed-width="0"
@@ -8,28 +8,28 @@
         :collapsed="collapsed"
         :native-scrollbar="false"
         show-trigger="bar"
+
         content-style="padding-top:0px; "
         bordered
         @collapse="collapsed= true"
         @expand="collapsed = false"
     >
-      <n-radio-group v-model:value="value" name="radiobuttongroup1" size="large" >
-
-        <n-radio-button value="point" >
-          点图
-        </n-radio-button>
-        <n-radio-button value="ball" >
-          球图
-        </n-radio-button>
-        <n-radio-button value="all">
+      <n-button-group  size="large">
+        <n-button @click="allmap=items">
           全部
-        </n-radio-button>
-      </n-radio-group>
-      <n-menu @update:value="handleUpdateValue" :options="maptype" />
+        </n-button>
+        <n-button  @click="allmap=allmap=items.filter(item=>item.type=='点图')">
+          点图
+        </n-button>
+        <n-button ghost round @click="allmap=allmap=items.filter(item=>item.type=='球图')">
+          球图
+        </n-button>
+      </n-button-group>
+      <n-menu @update:value="handleUpdateValue" :options="maptype " :render-label="renderMenuLabel" />
     </n-layout-sider>
 
-    <n-layout-content content-style="padding: 24px;  background-color:whitesmoke; "  :native-scrollbar="false">
-      <Map/>
+    <n-layout-content   content-style="padding: 24px;   height: 100%;" embedded :native-scrollbar="false">
+      <gameMap v-for="(map) in maptype" :key="map.key" :items="allmap.filter(item=>item.map==map.label)" :map="map"/>
     </n-layout-content>
     </n-layout>
   </div>
@@ -38,8 +38,9 @@
 <script>
 // @ is an alias to /src
 
-import { ref} from "vue";
-import Map from "../components/map";
+import {defineComponent, h, ref} from "vue";
+import gameMap from "../components/map";
+import axios from "axios";
 const maptype = [
       {label:'66号公路',key:'1'},
       {label:'阿努比斯神庙',key:'2'},
@@ -70,23 +71,50 @@ const maptype = [
       {label:'伊利奥斯',key:'27'},
       {label:'渣客镇',key:'28'},
     ]
-export default {
+
+export default defineComponent({
   name: 'Home',
   components: {
-    Map
+    gameMap
+  },data(){
+    return{
+      items:[],
+      allmap:[],
+      value:String,
+      place:String
+    }
   },
   setup(){
+
     return{
       collapsed: ref(false  ),
-      maptype
+      maptype,
+      renderMenuLabel(option){
+          return h('a', { href: "#map"+option.key }, option.label)
+      }
+
     }
-  }
-}
+  },computed:{
+
+
+  },mounted(){
+  axios.get('./api/map').then(res=>(this.items=res.data.data,
+      this.allmap=this.items
+  ))
+  this.$forceUpdate()
+    },methods: {
+
+  },updated(){
+
+  }}
+
+)
 </script>
 
 <style scoped>
 .home{
   height: calc(100vh - 65px);
+  position: relative;
  }
 
 </style>
