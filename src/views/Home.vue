@@ -14,6 +14,7 @@
         @expand="collapsed = false"
     >
       <n-button-group  size="large">
+
         <n-button @click="allmap=items">
           全部
         </n-button>
@@ -28,6 +29,7 @@
     </n-layout-sider>
 
     <n-layout   content-style="padding: 30px;" embedded :native-scrollbar="false" >
+      <n-back-top :right="100" />
       <gameMap v-for="(map) in maptype" :key="map.key" :items="allmap.filter(item=>item.map==map.label)" :map="map"/>
     </n-layout>
     </n-layout>
