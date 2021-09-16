@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-      <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.5/vue.cjs.min.js"></script>
-      <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.10/vue-router.cjs.min.js"></script>
-      <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
-      <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-      <script src="https://cdn.bootcdn.net/ajax/libs/core-js/3.16.0/minified.min.js"></script>
-      <script src="https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.1-beta3/mock-min.js"></script>
-
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.1.5/vue.cjs.min.js"></script>-->
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.10/vue-router.cjs.min.js"></script>-->
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>-->
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>-->
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/core-js/3.16.0/minified.min.js"></script>-->
+<!--      <script src="https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.1-beta3/mock-min.js"></script>-->
+      <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+      <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>" rel="preload" ></script>
+      <% } %>
   </head>
   <body>
     <noscript>

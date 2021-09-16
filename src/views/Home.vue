@@ -70,6 +70,7 @@ const maptype = [
       {label:'沃斯卡娅工业区',key:'26'},
       {label:'伊利奥斯',key:'27'},
       {label:'渣客镇',key:'28'},
+      {label:'圣诞节国王大道',key:'29'}
     ]
 
 export default defineComponent({
@@ -98,7 +99,7 @@ export default defineComponent({
 
 
   },mounted(){
-  axios.get('./api/map').then(res=>(this.items=res.data.data,
+  axios.get('http://121.36.54.93:3000/').then(res=>(this.items=res.data.data,
       this.allmap=this.items
   ))
   this.$forceUpdate()
