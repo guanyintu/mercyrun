@@ -98,7 +98,7 @@ export default defineComponent({
 
 
   },mounted(){
-  axios.get('http://121.36.54.93:3000/').then(res=>(this.items=res.data.data,
+  axios.get('https://xiaoxiaotu.icu:3000/').then(res=>(this.items=res.data.data,
       this.allmap=this.items
   ))
   this.$forceUpdate()
