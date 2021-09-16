@@ -1,6 +1,6 @@
 <template>
   <div class="home" id="Home">
-    <n-layout has-sider  style="height: 100%;" position="absolute">
+    <n-layout has-sider  style="height: 100%;"  position="absolute">
     <n-layout-sider
         collapse-mode="transform"
         :collapsed-width="0"
@@ -8,7 +8,6 @@
         :collapsed="collapsed"
         :native-scrollbar="false"
         show-trigger="bar"
-
         content-style="padding-top:0px; "
         bordered
         @collapse="collapsed= true"
@@ -28,9 +27,9 @@
       <n-menu @update:value="handleUpdateValue" :options="maptype " :render-label="renderMenuLabel" />
     </n-layout-sider>
 
-    <n-layout-content   content-style="padding: 24px;   height: 100%;" embedded :native-scrollbar="false">
+    <n-layout   content-style="padding: 30px;" embedded :native-scrollbar="false" >
       <gameMap v-for="(map) in maptype" :key="map.key" :items="allmap.filter(item=>item.map==map.label)" :map="map"/>
-    </n-layout-content>
+    </n-layout>
     </n-layout>
   </div>
 </template>
