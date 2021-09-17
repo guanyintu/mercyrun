@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import Clipboard from 'clipboard'
 import { useMessage } from 'naive-ui'
 import {defineComponent} from "vue";
+import ClipboardJS from "clipboard";
 // import { CashOutline as CashIcon } from '@vicons/ionicons5'
- const copy = ()=> {
 
-   const clipboard = new Clipboard('.code');
+ const copy = ()=> {
+   const clipboard = new ClipboardJS('.code');
    console.log(clipboard)
    clipboard.on('success', () => {
     console.log('复制成功')

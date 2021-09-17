@@ -3,7 +3,6 @@ const externals = {
     vue: 'Vue',
     'vue-router': 'VueRouter',
     axios: 'axios',
-    clipboard:"Clipboard",
     mockjs:'Mock'
 
 }
@@ -23,14 +22,17 @@ const cdn = {
 
         ],
         js: [
-            'https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.prod.min.js',
+            'https://cdn.bootcdn.net/ajax/libs/vue/3.2.0-beta.7/vue.global.js',
             'https://cdn.bootcdn.net/ajax/libs/vue-router/4.0.10/vue-router.global.prod.min.js',
             'https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js',
-            'https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js',
         ]
     }
 }
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production'
+        ? "https://xiaoxiaotu.icu"
+        : '/',
+
     configureWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
