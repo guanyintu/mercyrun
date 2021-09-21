@@ -1,4 +1,4 @@
-<template>
+<template v-if="items.length>0">
   <n-message-provider>
 
 <div class="map" :id="'map'+map.key">
@@ -77,7 +77,9 @@ export default  defineComponent({
   return{
       copy
   }
-},
+},mounted(){
+    console.log(this.items.length>0)
+  }
 })
 </script>
 

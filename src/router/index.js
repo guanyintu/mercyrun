@@ -3,6 +3,7 @@ import {createRouter,  createWebHistory} from 'vue-router'
 import {nextTick} from "vue";
 import Home from "../views/Home";
 import notFound from "../views/notFound";
+import tool from "@/views/tool";
 
 
 export const loadingBarApiRef = {}
@@ -11,6 +12,10 @@ export const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },{
+  path:'/tool',
+    name:'tool',
+    component:tool
   },
   {
     path: "/404",

@@ -7,7 +7,7 @@ import {
     NButton,
     NButtonGroup,
     NCard,
-    NGrid,
+    NGrid, NGridItem,
     NH1,
     NLayout, NLayoutHeader, NLayoutSider,
     NLoadingBarProvider,
@@ -23,7 +23,8 @@ import {
 import createDemoRouter, {routes} from "./router";
 import axios from "axios";
 const naive = create({
-    components: [NButton,NMessageProvider,NLoadingBarProvider,NLayout,NMenu,NButtonGroup,NH1,NText,NCard,NThing,NGrid,NTag,NRate,NSpace,NLayoutSider,NLayoutHeader,NBackTop]
+    components: [NButton,NMessageProvider,NLoadingBarProvider,NLayout,NMenu,NButtonGroup,NH1,
+        NText,NCard,NThing,NGrid,NTag,NRate,NSpace,NLayoutSider,NLayoutHeader,NBackTop, NGridItem ]
 })
 
 const app=createApp(App);
